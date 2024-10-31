@@ -3,7 +3,6 @@ package part_01._02_Types._05_Primitive_vs_Reference_Types;
 import java.awt.*;
 
 public class _05_Primitive_vs_Reference_Types {
-
     public static void main(String[] args) {
         // 1. Primitive Type:
         byte x = 1;        // 'x' is stored on the stack with the value 1

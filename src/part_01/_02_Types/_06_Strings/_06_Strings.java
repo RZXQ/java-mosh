@@ -1,7 +1,6 @@
 package part_01._02_Types._06_Strings;
 
 public class _06_Strings {
-
     public static void main(String[] args) {
         // 1. Initialize a String variable with concatenation
         String message = "  Hello World" + "!!  ";

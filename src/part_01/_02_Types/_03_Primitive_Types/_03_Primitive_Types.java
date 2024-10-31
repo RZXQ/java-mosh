@@ -19,7 +19,6 @@ package part_01._02_Types._03_Primitive_Types;
 /// | char      | 16-bit   | 0 to 65,535 (Unsigned, represents Unicode characters)      |
 /// | boolean   | N/A      | true or false                                              |
 public class _03_Primitive_Types {
-
     public static void main(String[] args) {
         // byte: small integer value (-128 to 127)
         byte age = 30;
