@@ -1,7 +1,6 @@
 package part_01._02_Types._07_Escape_Sequences;
 
 public class _07_Escape_Sequences {
-
     public static void main(String[] args) {
         // 1. Displaying double quotes within a string
         System.out.println("Hello \"Ruizhi\""); // Output: Hello "Ruizhi"
