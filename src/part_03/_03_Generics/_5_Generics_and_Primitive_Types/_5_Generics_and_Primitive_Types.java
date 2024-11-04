@@ -1,37 +1,24 @@
 package part_03._03_Generics._5_Generics_and_Primitive_Types;
 
-/// 1. Primitive types cannot be used directly as type parameters in generics.
-///    For example, you cannot have GenericList<int> because generics require reference types (objects).
-///
-/// 2. Each primitive type has a corresponding wrapper class that can be used with generics:
-///    - int     -> Integer
-///    - float   -> Float
-///    - boolean -> Boolean
-///    - char    -> Character
-///    - double  -> Double
-///    - long    -> Long
-///    - short   -> Short
-///    - byte    -> Byte
-///
-/// 3. Since Java 7, the diamond operator (<>) allows us to omit the type arguments
-///    on the right-hand side of a generic class instantiation when they can be inferred.
-///    This makes the code cleaner and less repetitive.
-
 public class _5_Generics_and_Primitive_Types {
+    public static void main(String[] args) {
+        // 1 - Limitation of Generics with Primitives
+        // Generics cannot directly work with primitive types (e.g., int, double, etc.).
+        // For example, we cannot use GenericList<int> because generics only accept reference types (objects).
 
-	public static void main(String[] args) {
+        // 2 - Using Wrapper Class as a Substitute
+        // To use a primitive type, we substitute it with its corresponding wrapper class.
+        // Here, we use Integer (the wrapper for int) as the type parameter in GenericList.
+        GenericList<Integer> numbers = new GenericList<>();
 
-		// Using the wrapper class Integer as the type parameter instead of the primitive
-		// int.
-		GenericList<Integer> numbers = new GenericList<>();
+        // 3 - Auto-boxing (int -> Integer)
+        // Java automatically converts the primitive int value '1' into an Integer object when we add it to the list.
+        // This automatic conversion from int to Integer is known as "auto-boxing."
+        numbers.add(1);
 
-		// Auto-boxing: Java automatically converts the primitive int '1' to an Integer
-		// object.
-		numbers.add(1);
-
-		// Auto-unboxing: Java automatically converts the Integer object back to a
-		// primitive int.
-		int number = numbers.get(0);
-	}
-
+        // 4 - Auto-unboxing (Integer -> int)
+        // When retrieving the value from the list, Java automatically converts the Integer object back to an int.
+        // This automatic conversion from Integer to int is called "auto-unboxing."
+        int number = numbers.get(0);
+    }
 }
