@@ -4,7 +4,7 @@ public class _7_Type_Erasure {
 
 	public static void main(String[] args) {
 
-		GenericList<User> users = new GenericList<>();
+		GenericList<Integer> users = new GenericList<>();
 
 	}
 
