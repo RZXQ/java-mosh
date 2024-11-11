@@ -1,6 +1,8 @@
 package part_03._03_Generics._12_Wildcards;
 
-public class User implements Comparable<User>, Cloneable {
+import org.jetbrains.annotations.NotNull;
+
+public class User implements Comparable<User> {
 
 	private final int points;
 
@@ -9,13 +11,13 @@ public class User implements Comparable<User>, Cloneable {
 	}
 
 	@Override
-	public int compareTo(User otherUser) {
-		return this.points - otherUser.points;
+	public int compareTo(@NotNull User other) {
+		return this.points - other.points;
 	}
 
 	@Override
 	public String toString() {
-		return "Points = " + this.points;
+		return "User{" + "points=" + points + '}';
 	}
 
 }
