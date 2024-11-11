@@ -7,7 +7,7 @@ public class Utils {
 	}
 
 	public static void printUsers(GenericList<User> users) {
-
+		// don't worry about the implementation right now
 	}
 
 }
