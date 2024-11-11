@@ -17,8 +17,10 @@ public class Utils {
 	// - This constraint makes it possible for `max` to compare two instances of `T`,
 	//   allowing the method to work with types like `Integer`, `String`, or any
 	//   custom type implementing `Comparable`.
+	// @formatter:on
 
 	public static <T extends Comparable<T>> T max(T first, T second) {
 		return first.compareTo(second) < 0 ? second : first; // returns larger of the two
 	}
+
 }
