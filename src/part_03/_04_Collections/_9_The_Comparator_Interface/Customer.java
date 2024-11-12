@@ -2,9 +2,9 @@ package part_03._04_Collections._9_The_Comparator_Interface;
 
 public class Customer {
 
-	private String name;
+	private final String email;
 
-	private String email;
+	private String name;
 
 	public Customer(String name, String email) {
 		this.name = name;
@@ -21,7 +21,7 @@ public class Customer {
 
 	@Override
 	public String toString() {
-		return "Customer{" + "name='" + name + '\'' + '}';
+		return "Customer{" + "name='" + name + '\'' + ", email='" + email + '\'' + '}';
 	}
 
 }

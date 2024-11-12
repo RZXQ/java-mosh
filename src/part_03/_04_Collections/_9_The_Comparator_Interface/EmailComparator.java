@@ -5,8 +5,8 @@ import java.util.Comparator;
 public class EmailComparator implements Comparator<Customer> {
 
 	@Override
-	public int compare(Customer o1, Customer o2) {
-		return o1.getEmail().compareTo(o2.getEmail());
+	public int compare(Customer c1, Customer c2) {
+		return c1.getEmail().compareTo(c2.getEmail());
 	}
 
 }
