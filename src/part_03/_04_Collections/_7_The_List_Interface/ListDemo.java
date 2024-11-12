@@ -4,42 +4,94 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-// 1. Common: The List interface extends the Collection interface, so it inherits all the methods from the Collection interface.
-// 2. Difference: The Collection interface does not support indexing.
+// Introduction:
+// -------------
+// The List interface in Java extends the Collection interface.
+// This means it inherits all methods from Collection.
+// The key difference is that List supports indexing,
+// allowing access to elements based on their position.
+
 public class ListDemo {
 
 	public static void show() {
+
+		// Creating a List:
+		// ----------------
+		// We create a List of Strings using ArrayList,
+		// which is a resizable array implementation of List.
 		List<String> list = new ArrayList<>();
 
-		// 1. list.add(): Add items to the list
-		list.add("a");
-		list.add("b");
-		list.add("c");
-		list.add(0, "!"); // Add item at a specific index
+		// ADD Operations:
+		// ---------------
 
-		// 2. Collections.addAll(): Add multiple items to the list at once
-		Collections.addAll(list, "a", "b", "c", "a");
+		// 1. Adding elements individually using add().
+		list.add("a"); // Adds "a" at the end of the list.
+		list.add("b"); // Adds "b" at the end.
+		list.add("c"); // Adds "c" at the end.
 
-		// 3. list.get(index): Get the item at a specific index
-		System.out.println(list.get(0));
+		// 2. Adding an element at a specific index.
+		list.add(0, "!"); // Inserts "!" at index 0, shifts others right.
 
-		// 4. list.set(index, ?): Modify the item at a specific index
-		list.set(0, "a+");
+		// 3. Adding multiple elements at once using Collections.addAll().
+		Collections.addAll(list, "a", "b", "c", "a"); // Adds all at the end.
 
-		// 5. list.remove(index): Remove the item at a specific index
-		list.remove(0);
+		// READ Operations:
+		// ----------------
 
-		// 6. list.indexOf(): Get the index of the first occurrence of an item
-		System.out.println(list.indexOf("a"));
+		// 4. Accessing elements by index using get(index).
+		String firstItem = list.get(0); // Gets element at index 0.
+		System.out.println("First item: " + firstItem);
 
-		// 7. list.lastIndexOf(): Get the index of the last occurrence of an item
-		System.out.println(list.lastIndexOf("a"));
+		// 5. Finding the index of the first occurrence of an element.
+		int indexOfA = list.indexOf("a"); // Searches from start to end.
+		System.out.println("First index of 'a': " + indexOfA);
 
-		// 8. list.subList(int fromIndex, int toIndex): Get a sub-list from the list
-		System.out.println(list.subList(0, 2));
+		// 6. Finding the index of the last occurrence of an element.
+		int lastIndexOfA = list.lastIndexOf("a"); // Searches from end to start.
+		System.out.println("Last index of 'a': " + lastIndexOfA);
 
-		// Print the entire list
-		System.out.println(list);
+		// UPDATE Operations:
+		// ------------------
+
+		// 7. Modifying an element at a specific index using set(index, element).
+		list.set(0, "a+"); // Replaces element at index 0 with "a+".
+
+		// DELETE Operations:
+		// ------------------
+
+		// 8. Removing an element by index using remove(index).
+		list.remove(0); // Removes the element at index 0.
+
+		// SUBLIST Operation:
+		// ------------------
+
+		// 9. Getting a portion of the list using subList(fromIndex, toIndex).
+		// Creates a view from fromIndex (inclusive) to toIndex (exclusive).
+		List<String> subList = list.subList(0, 2); // Gets elements at index 0 and 1.
+		System.out.println("Sublist: " + subList);
+
+		// DISPLAYING THE LIST:
+		// --------------------
+
+		// Printing the entire list.
+		System.out.println("Complete list: " + list);
+
+		// ITERATING OVER THE LIST:
+		// ------------------------
+
+		// Using a for-each loop to iterate over the list.
+		System.out.println("Iterating over the list:");
+		for (String item : list) {
+			System.out.println(item);
+		}
+
+		// ADDITIONAL NOTES:
+		// -----------------
+
+		// - Lists maintain insertion order.
+		// - They allow duplicate elements.
+		// - Indexing starts from 0.
+		// - Negative indices are invalid and will throw an exception.
 	}
 
 }
