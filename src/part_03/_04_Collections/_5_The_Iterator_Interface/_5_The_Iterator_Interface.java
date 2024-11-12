@@ -8,16 +8,17 @@ public class _5_The_Iterator_Interface {
 		list.add("b");
 		list.add("c");
 
+		// iterator.hasNext() & iterator.next():
 		var iterator = list.iterator();
-
 		while (iterator.hasNext()) {
-			var current = iterator.next();
-			System.out.println(current);
+			System.out.println(iterator.next());
 		}
 
+		// enhanced for loop:
 		for (var item : list) {
 			System.out.println(item);
 		}
+
 	}
 
 }

@@ -3,66 +3,63 @@ package part_03._04_Collections._5_The_Iterator_Interface;
 import org.jetbrains.annotations.NotNull;
 import java.util.Iterator;
 
-/// GenericList class declaration:
-/// - Implements Iterable<T>
-/// - Uses an array to store elements
-/// - Provides methods to add and retrieve elements
-/// - Inner class ListIterator implements Iterator<T> for iteration
+// We define a generic class called GenericList that implements Iterable<T>.
 public class GenericList<T> implements Iterable<T> {
 
-	// Array to store the items, initialized with a size of 10
-	private T[] items = (T[]) new Object[10];
+	// Create an array to store items of type T.
 
-	// Variable to keep track of the number of elements added to the list
-	private int count;
+	// Since Java doesn't allow creating generic arrays directly, we create an Object
+	// array and cast it to T[]. The @SuppressWarnings annotation tells the compiler to
+	// ignore warnings about this unchecked cast.
+	@SuppressWarnings("unchecked")
+	private final T[] items = (T[]) new Object[10];
 
-	// Method to add an item to the list
+	private int count = 0;
+
 	public void add(T item) {
-		// Add the item at the current count index, then increment the count
-		items[count++] = item;
+		items[count] = item;
+		count++;
 	}
 
-	// Method to get an item from the list by index
 	public T get(int index) {
-		// Return the item at the specified index
 		return items[index];
 	}
 
+	// This method is required by the Iterable interface.
+	// It returns an Iterator<T> that can be used to iterate over the list.
 	@Override
-	// Override the iterator method from the Iterable interface
 	public @NotNull Iterator<T> iterator() {
-		// Return a new instance of the inner ListIterator class, passing the current list
-		// instance
+		// Return a new instance of ListIterator, passing in this list
 		return new ListIterator(this);
 	}
 
-	// Inner class ListIterator implementing Iterator for type T
+	// Define an inner class called ListIterator that implements Iterator<T>.
+	// This iterator will allow us to traverse the elements of the list.
 	private class ListIterator implements Iterator<T> {
 
-		// Reference to the outer GenericList instance
-		private GenericList<T> list;
+		private final GenericList<T> list; // The list we're iterating over
 
-		// Index to keep track of the current position in the iteration
-		private int index;
+		private int index = 0; // Current position in the list
 
-		// Constructor for ListIterator, taking the outer list as an argument
+		// Constructor for the iterator, takes the list to iterate over
 		public ListIterator(GenericList<T> list) {
-			// Initialize the list reference with the outer instance
-			this.list = list;
+			this.list = list; // Store the reference to the list
+			// index is already initialized to 0
 		}
 
-		@Override
 		// Method to check if there are more elements to iterate over
+		@Override
 		public boolean hasNext() {
-			// Return true if the current index is less than the count of items
-			return (this.index < this.list.count);
+			// If the current index is less than the number of items, there are more
+			// elements
+			return index < list.count;
 		}
 
+		// Method to get the next element in the iteration
 		@Override
-		// Method to return the next element in the iteration
 		public T next() {
-			// Return the element at the current index, then increment the index
-			return this.list.items[this.index++];
+			// Retrieve the item at the current index
+			return list.items[this.index++];// Move to the next index for the next call
 		}
 
 	}
