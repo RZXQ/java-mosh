@@ -31,23 +31,41 @@ public class CollectionsDemo {
 		// 3. Add multiple elements at once using Collections.addAll().
 		Collections.addAll(collection, "d", "e", "f"); // Adds "d", "e", "f".
 
+		// 4. Add all elements from another collection using addAll().
+		Collection<String> other = new ArrayList<>();
+		other.add("x");
+		other.add("y");
+		other.add("z");
+
+		collection.addAll(other); // Adds "x", "y", "z" to collection.
+
 		// READ Operations
 		// ----------------
 
-		// 4. Iterate over the collection using a for-each loop.
+		// 5. Iterate over the collection using a for-each loop.
 		// Since Collection is Iterable, we can loop through its elements.
 		System.out.println("Elements in the collection:");
 		for (String item : collection) {
 			System.out.println(item); // Prints each element.
 		}
 
-		// 5. Get the number of elements using size().
+		// 6. Get the number of elements using size().
 		int size = collection.size(); // Retrieves the number of elements.
 		System.out.println("Size of collection: " + size); // Prints the size.
 
-		// 6. Check if the collection contains a specific element using contains().
+		// 7. Check if the collection contains a specific element using contains().
 		boolean hasA = collection.contains("a"); // Checks for "a".
 		System.out.println("Contains 'a': " + hasA); // Prints true or false.
+
+		// 8. Check if two collections are equal using equals().
+		// Collections are equal if they have the same elements in the same order.
+		Collection<String> collectionCopy = new ArrayList<>(collection);
+		boolean areEqual = collection.equals(collectionCopy); // Should be true.
+		System.out.println("Collections are equal: " + areEqual);
+
+		// Comparing with 'other' collection.
+		boolean areEqualOther = collection.equals(other); // Should be false.
+		System.out.println("Collection equals 'other': " + areEqualOther);
 
 		// UPDATE Operations
 		// ------------------
@@ -70,23 +88,22 @@ public class CollectionsDemo {
 		// DELETE Operations
 		// ------------------
 
-		// 7. Remove a specific element using remove().
+		// 9. Remove a specific element using remove().
 		collection.remove("b"); // Removes "b" from the collection.
 
-		// 8. Remove all elements using clear().
+		// 10. Remove all elements using clear().
 		collection.clear(); // Empties the collection.
 
-		// 9. Check if the collection is empty using isEmpty().
+		// 11. Check if the collection is empty using isEmpty().
 		boolean isEmpty = collection.isEmpty(); // Checks if collection is empty.
-		System.out.println("Is the collection empty? " + isEmpty); // Prints true or
-																	// false.
+		System.out.println("Is the collection empty? " + isEmpty);
 
 		// OTHER Operations
 		// -----------------
 
-		// 10. Convert the collection to an array using toArray().
+		// 12. Convert the collection to an array using toArray().
 		// First, let's add some elements back to the collection.
-		Collections.addAll(collection, "x", "y", "z");
+		Collections.addAll(collection, "p", "q", "r");
 
 		// Convert the collection to an array.
 		String[] array = collection.toArray(new String[0]);
@@ -94,24 +111,6 @@ public class CollectionsDemo {
 		for (String s : array) {
 			System.out.println(s);
 		}
-
-		// 11. Add all elements from another collection using addAll().
-		Collection<String> other = new ArrayList<>();
-		other.add("p");
-		other.add("q");
-		other.add("r");
-
-		collection.addAll(other); // Adds "p", "q", "r" to collection.
-
-		// 12. Check if two collections are equal using equals().
-		// Collections are equal if they have the same elements in the same order.
-		Collection<String> collectionCopy = new ArrayList<>(collection);
-		boolean areEqual = collection.equals(collectionCopy); // Should be true.
-		System.out.println("Collections are equal: " + areEqual);
-
-		// Comparing with 'other' collection.
-		boolean areEqualOther = collection.equals(other); // Should be false.
-		System.out.println("Collection equals 'other': " + areEqualOther);
 
 	}
 
