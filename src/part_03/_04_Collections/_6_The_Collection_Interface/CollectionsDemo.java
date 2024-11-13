@@ -57,7 +57,12 @@ public class CollectionsDemo {
 		boolean hasA = collection.contains("a"); // Checks for "a".
 		System.out.println("Contains 'a': " + hasA); // Prints true or false.
 
-		// 8. Check if two collections are equal using equals().
+		// 8. Check if the collection is empty using isEmpty().
+		boolean isEmpty = collection.isEmpty(); // Checks if collection is empty.
+		System.out.println("Is the collection empty? " + isEmpty); // Prints true or
+																	// false.
+
+		// 9. Check if two collections are equal using equals().
 		// Collections are equal if they have the same elements in the same order.
 		Collection<String> collectionCopy = new ArrayList<>(collection);
 		boolean areEqual = collection.equals(collectionCopy); // Should be true.
@@ -88,15 +93,11 @@ public class CollectionsDemo {
 		// DELETE Operations
 		// ------------------
 
-		// 9. Remove a specific element using remove().
+		// 10. Remove a specific element using remove().
 		collection.remove("b"); // Removes "b" from the collection.
 
-		// 10. Remove all elements using clear().
+		// 11. Remove all elements using clear().
 		collection.clear(); // Empties the collection.
-
-		// 11. Check if the collection is empty using isEmpty().
-		boolean isEmpty = collection.isEmpty(); // Checks if collection is empty.
-		System.out.println("Is the collection empty? " + isEmpty);
 
 		// OTHER Operations
 		// -----------------
