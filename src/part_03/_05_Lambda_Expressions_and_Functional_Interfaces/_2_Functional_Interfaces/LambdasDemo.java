@@ -1,20 +1,15 @@
 package part_03._05_Lambda_Expressions_and_Functional_Interfaces._2_Functional_Interfaces;
 
-/// This class demonstrates the use of anonymous inner classes.
-///
-/// An anonymous inner class is a class without a name that is used for one-time
-/// implementations of an interface or class. It allows us to instantiate and
-/// define the behavior in the same place where we need the instance.
-///
-/// In this example, we use an anonymous inner class to implement the Printer
-/// interface inside the method call, without needing to define a separate named class.
+// This class demonstrates the use of anonymous inner classes and functional interfaces
 public class LambdasDemo {
 
-	// anonymous inner class:
 	public static void show() {
-		// We define the implementation of the Printer interface directly inside the
-		// method using an anonymous inner class. Since we don't need to reuse this
-		// implementation, it's practical to define it inline for one-time use.
+		// A. Use a concrete class implementation of Printer
+		// We create an instance of ConsolePrinter, which implements the Printer
+		// interface, and pass it to the greet method
+		greet(new ConsolePrinter());
+
+		// B. Use an anonymous inner class to implement Printer
 		greet(new Printer() {
 			@Override
 			public void print(String message) {
@@ -23,8 +18,13 @@ public class LambdasDemo {
 		});
 	}
 
+	// The greet method accepts a Printer object
+	// We don't care about the specific implementation; we're programming to the interface
+	// This promotes flexibility and allows us to pass any object that implements Printer
+	// The method is static so it can be called without creating an instance of
+	// LambdasDemo
 	public static void greet(Printer printer) {
-		// Calls the print method of the Printer interface, implemented in the anonymous inner class.
+		// Calls the print method of the Printer interface
 		printer.print("Hello World");
 	}
 
