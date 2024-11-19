@@ -2,43 +2,38 @@ package part_03._05_Lambda_Expressions_and_Functional_Interfaces._14_Combining_P
 
 import java.util.function.Predicate;
 
-/// In this example, we use Predicates to create conditions and combine them.
+/// Demonstration of combining predicates and their usage in Java.
 ///
-///    - Sometimes, you need to check multiple conditions together. For example, you might want to check if a string starts and ends with certain characters.
-///    - Java provides methods like `and()`, `or()`, and `negate()` to combine simple conditions (Predicates) into more complex ones.
+/// 1. Predicate Interface:
+///    - Interface: Predicate<T>
+///    - Method: boolean test(T t)
+///    - Purpose: Represents a condition or test on an input.
 ///
-/// 2. **and()**: Combines two conditions so that both must be true.
-///    - Example: Checking if a string has both a left brace `{` and a right brace `}`.
-/// 3. **or()**: Combines two conditions where at least one must be true.
-///    - Example: Checking if a string has either a left brace `{` or a right brace `}`.
-///
-/// 4. **negate()**: Reverses a condition.
-///    - Example: Checking if a string does **not** have a left brace `{`.
+/// 2. Combining Predicates:
+///    - and(Predicate other):
+///      - Combines this predicate with another using logical AND.
+///    - or(Predicate other):
+///      - Combines this predicate with another using logical OR.
+///    - negate():
+///      - Returns a predicate that represents the logical negation of this predicate.
 public class LambdasDemo {
 
 	public static void show() {
-		// Predicate to check if a string starts with '{'
+		// Creating predicates to test specific conditions
 		Predicate<String> hasLeftBrace = str -> str.startsWith("{");
-		// Predicate to check if a string ends with '}'
 		Predicate<String> hasRightBrace = str -> str.endsWith("}");
 
-		// Combining two predicates with "and": both conditions must be true.
-		Predicate<String> hasLeftAndRightBrace = hasLeftBrace.and(hasRightBrace);
-		// true because the string starts with '{' and ends with '}'
-		var result1 = hasLeftAndRightBrace.test("{key:value}");
-		System.out.println(result1); // Output: true
+		// 1. Combining predicates using AND
+		// This checks if a string starts with '{' AND ends with '}'.
+		System.out.println("AND: " + hasLeftBrace.and(hasRightBrace).test("{key:value}"));
 
-		// Combining two predicates with "or": at least one condition must be true.
-		Predicate<String> hasLeftOrRightBrace = hasLeftBrace.or(hasRightBrace);
-		// true because the string starts with '{' (even though it also ends with '}')
-		var result2 = hasLeftOrRightBrace.test("{key:value}");
-		System.out.println(result2); // Output: true
+		// 2. Combining predicates using OR
+		// This checks if a string starts with '{' OR ends with '}'.
+		System.out.println("OR: " + hasLeftBrace.or(hasRightBrace).test("{key:value"));
 
-		// Negating a predicate: checks if the condition is false.
-		Predicate<String> notHasLeftBrace = hasLeftBrace.negate();
-		// false because the string starts with '{'
-		var result3 = notHasLeftBrace.test("{key:value}");
-		System.out.println(result3); // Output: false
+		// 3. Negating a predicate
+		// This checks if a string does NOT start with '{'.
+		System.out.println("Negate: " + hasLeftBrace.negate().test("key:value}"));
 	}
 
 }
