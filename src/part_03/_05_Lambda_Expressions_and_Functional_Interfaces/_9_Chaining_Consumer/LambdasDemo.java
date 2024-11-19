@@ -3,23 +3,30 @@ package part_03._05_Lambda_Expressions_and_Functional_Interfaces._9_Chaining_Con
 import java.util.List;
 import java.util.function.Consumer;
 
+/**
+ * Demonstrates chaining of Consumers to perform multiple operations sequentially. The
+ * Consumer interface provides a default method: Consumer<T> andThen(Consumer<? super T>
+ * after)
+ */
 public class LambdasDemo {
 
-	// Main method to demonstrate chaining of Consumers with lambda expressions
 	public static void show() {
-		// Creating an immutable list of strings containing "a", "b", and "c"
+		// Initialize a list of strings
 		List<String> list = List.of("a", "b", "c");
 
-		// Defining a Consumer to print the item
-		Consumer<String> print = item -> System.out.println(item);
+		// Operation 1: Print each string (using a method reference)
+		Consumer<String> print = System.out::print;
 
-		// Defining another Consumer to print the item in uppercase
+		// Operation 2: Print each string in uppercase (using a lambda expression)
 		Consumer<String> printUpperCase = item -> System.out.println(item.toUpperCase());
 
-		// Chaining Consumers using `andThen()`:
-		// This will first print the item, then print the item in uppercase,
-		// and finally print the item again.
-		list.forEach(print.andThen(printUpperCase).andThen(print));
+		// Chain the consumers: execute print, then printUpperCase for each item
+		list.forEach(print.andThen(printUpperCase));
+
+		// Expected output:
+		// aA
+		// bB
+		// cC
 	}
 
 }
