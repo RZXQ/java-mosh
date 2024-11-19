@@ -2,43 +2,43 @@ package part_03._05_Lambda_Expressions_and_Functional_Interfaces._16_The_UnaryOp
 
 import java.util.function.UnaryOperator;
 
-/// This class demonstrates the use of the UnaryOperator interface in Java.
-/// - UnaryOperator is a specialized form of Function that takes a single argument
-///   of type T and returns a result of the same type T.
+/// Demonstration of the UnaryOperator interface and its usage in Java.
 ///
-/// Key Points:
-/// 1. **UnaryOperator**:
-///    - Syntax: UnaryOperator<T> where T is the type of the operand and result.
-///    - Example:
-///      - `square` is a UnaryOperator that squares an Integer.
-///        - Definition: `UnaryOperator<Integer> square = n -> n * n;`
-///      - `increment` is a UnaryOperator that increments an Integer by 1.
-///        - Definition: `UnaryOperator<Integer> increment = n -> n + 1;`
+/// 1. UnaryOperator Interface:
+///    - Interface: UnaryOperator<T>
+///    - Method: T apply(T t)
+///    - Purpose: Represents an operation on a single operand that produces a result
+///      of the same type as its operand.
 ///
-/// 2. **Function Chaining with andThen**:
-///    - The `andThen` method is used to chain functions.
-///    - In this example, it first applies the `square` operation, then applies the `increment` operation to the result.
-///    - `square.andThen(increment).apply(2)`:
-///      - First, it calculates 2 * 2 = 4.
-///      - Then, it computes 4 + 1 = 5.
-///
-/// This example illustrates how to combine simple operations to achieve more complex functionality in a clean and readable way.
+/// 2. Function Chaining:
+///    - Use `andThen(Function after)` to apply an additional operation after the current one.
+///    - Use `compose(Function before)` to apply an operation before the current one.
 public class LambdasDemo {
 
 	public static void show() {
-		// Defines a UnaryOperator that squares an Integer.
+		// Demonstrating UnaryOperator with different operations
+
+		// 1. Defines a UnaryOperator that squares an Integer.
 		UnaryOperator<Integer> square = n -> n * n;
 
-		// Defines a UnaryOperator that increments an Integer by 1.
+		// 2. Defines a UnaryOperator that increments an Integer by 1.
 		UnaryOperator<Integer> increment = n -> n + 1;
 
-		// Chains the square and increment functions using the andThen method.
-		// First, the square operation is applied, then the increment function is applied
-		// to the result.
-		// square.andThen(increment).apply(2):
+		// 3. Function chaining using `andThen`
+		// Task: Square the number, then increment the result.
+		// Explanation for square.andThen(increment).apply(2):
 		// - First, it calculates 2 * 2 = 4.
 		// - Then, it calculates 4 + 1 = 5.
-		System.out.println(square.andThen(increment).apply(2)); // Output: 5
+		System.out.println("Using andThen: " + square.andThen(increment).apply(2)); // Output:
+																					// 5
+
+		// 4. Function chaining using `compose`
+		// Task: Increment the number first, then square the result.
+		// Explanation for increment.compose(square).apply(2):
+		// - First, it calculates 2 * 2 = 4.
+		// - Then, it calculates 4 + 1 = 5.
+		System.out.println("Using compose: " + increment.compose(square).apply(2)); // Output:
+																					// 5
 	}
 
 }
