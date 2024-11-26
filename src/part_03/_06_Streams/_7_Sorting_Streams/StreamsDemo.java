@@ -3,39 +3,28 @@ package part_03._06_Streams._7_Sorting_Streams;
 import java.util.Comparator;
 import java.util.List;
 
+/// This class demonstrates sorting streams of Movie objects
+/// using different approaches:
+/// 1. Using a lambda expression in the sorted() method.
+/// 2. Using Comparator.comparing() for ascending and descending order.
 public class StreamsDemo {
 
 	public static void show() {
-		var movies = List.of(new Movie("A", 10), new Movie("B", 15), new Movie("C", 20));
+		var movies = List.of(new Movie("b", 10), new Movie("a", 20), new Movie("c", 30));
 
-		// 1. Traditional sorting approach:
-		// - This sorts movies by their titles in ascending order using a lambda
-		// expression.
-		// - The lambda (a, b) -> a.getTitle().compareTo(b.getTitle()) compares movie
-		// titles.
-		// movies.stream().sorted((a, b) ->
-		// a.getTitle().compareTo(b.getTitle())).forEach(System.out::println);
+		// 1. sorted(): use lambda to sort by title
+		movies.stream()
+			.sorted((o1, o2) -> o1.getTitle().compareTo(o2.getTitle()))
+			.forEach(m -> System.out.println(m.getTitle()));
 
-		// 2. Simplified sorting with Comparator.comparing:
-		// - Using Comparator.comparing() provides a cleaner way to sort by specific
-		// properties.
-		// - sorted(Comparator.comparing(Movie::getTitle)) sorts movies by title in
-		// ascending order.
-		movies.stream().sorted(Comparator.comparing(Movie::getTitle)).forEach(m -> System.out.println(m.getTitle())); // Prints
-																														// movie
-																														// titles
-																														// in
-																														// ascending
-																														// order
+		// 2. Comparator.comparing():
+		// 2.1 Ascending order
+		movies.stream().sorted(Comparator.comparing(Movie::getTitle)).forEach(m -> System.out.println(m.getTitle()));
 
-		// 3. Sorting in reverse order:
-		// - We can add .reversed() to reverse the order of the sorting criteria.
-		// - sorted(Comparator.comparing(Movie::getTitle).reversed()) sorts titles in
-		// descending order.
+		// 2.2 Descending order
 		movies.stream()
 			.sorted(Comparator.comparing(Movie::getTitle).reversed())
-			.forEach(m -> System.out.println(m.getTitle())); // Prints movie titles in
-																// descending order
+			.forEach(m -> System.out.println(m.getTitle()));
 	}
 
 }
