@@ -2,23 +2,19 @@ package part_03._06_Streams._15_Primitive_Type_Streams;
 
 import java.util.stream.IntStream;
 
-/// Primitive Type Streams:
-/// - In Java, there are specialized streams for handling primitive types (IntStream, LongStream, DoubleStream).
-/// - These are optimized for performance when working with primitives and avoid the overhead of boxing/unboxing.
-/// - Two common methods in IntStream:
-///   1. IntStream.rangeClosed(start, end): Generates a stream of integers from 'start' to 'end' (inclusive).
-///   2. IntStream.range(start, end): Generates a stream of integers from 'start' to 'end' (exclusive of 'end').
+/// Demonstrates Primitive Type Streams in Java.
+/// Essential Points:
+/// 1. Specialized streams for primitives: IntStream, LongStream, DoubleStream.
+/// 2. Avoids boxing/unboxing overhead, optimized for performance.
+/// 3. `IntStream.rangeClosed(start, end)`: Includes end value.
+/// 4. `IntStream.range(start, end)`: Excludes end value.
 public class StreamsDemo {
 
 	public static void show() {
-		// 1. IntStream.rangeClosed()
-		// - Generates numbers from 1 to 5, inclusive.
-		// - Prints: 1, 2, 3, 4, 5
+		// Generates numbers from 1 to 5 (inclusive)
 		IntStream.rangeClosed(1, 5).forEach(System.out::println);
 
-		// 2. IntStream.range()
-		// - Generates numbers from 1 to 5, exclusive of 5.
-		// - Prints: 1, 2, 3, 4
+		// Generates numbers from 1 to 4 (end value excluded)
 		IntStream.range(1, 5).forEach(System.out::println);
 	}
 
