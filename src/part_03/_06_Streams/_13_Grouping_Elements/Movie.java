@@ -4,9 +4,9 @@ public class Movie {
 
 	private final int likes;
 
-	private String title;
+	private final String title;
 
-	private Genre genre;
+	private final Genre genre;
 
 	public Movie(String title, int likes, Genre genre) {
 		this.title = title;
@@ -20,6 +20,11 @@ public class Movie {
 
 	public String getTitle() {
 		return title;
+	}
+
+	@Override
+	public String toString() {
+		return "Movie{" + "likes=" + likes + ", title='" + title + '\'' + ", genre=" + genre + '}';
 	}
 
 	public Genre getGenre() {
