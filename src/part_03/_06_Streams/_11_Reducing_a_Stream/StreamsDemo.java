@@ -7,19 +7,16 @@ import java.util.List;
 /// 2) Using `reduce` with an identity to avoid dealing with Optional.
 public class StreamsDemo {
 
-	public static void show() {
-		// List<Movie> movies = List.of(); // Uncomment for an empty movies list
-		var movies = List.of(new Movie("a", 10), new Movie("b", 20), new Movie("c", 30));
+    // Entry point for the demonstration
+    public static void show() {
+        var movies = List.of(new Movie("a", 10), new Movie("b", 20), new Movie("c", 30));
 
-		// 1. Reduce without identity. Optional handles potential empty list.
-		System.out.println(movies.stream().map(Movie::getLikes).reduce(Integer::sum).orElse(0));
+        // 1. Reduce without identity.
+        // This approach maps the stream of movies to their likes, and then reduces the stream
+        System.out.println(movies.stream().map(Movie::getLikes).reduce(Integer::sum).orElse(0));
 
-		// 2. Reduce with identity. No Optional handling needed.
-		System.out.println(movies.stream().map(Movie::getLikes).reduce(0, Integer::sum));
-	}
-
-	public static void main(String[] args) {
-		show();
-	}
-
+        // 2. Reduce with identity.
+        // This approach also maps the stream of movies to their likes, and then reduces the
+        System.out.println(movies.stream().map(Movie::getLikes).reduce(0, Integer::sum));
+    }
 }
