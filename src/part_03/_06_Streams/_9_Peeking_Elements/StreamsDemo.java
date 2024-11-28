@@ -11,24 +11,20 @@ import java.util.List;
 /// 4. Print the titles of the filtered and mapped movies.
 public class StreamsDemo {
 
-	public static void show() {
-		var movies = List.of(new Movie("a", 10), new Movie("b", 20), new Movie("c", 30));
+    public static void show() {
+        var movies = List.of(new Movie("a", 10), new Movie("b", 20), new Movie("c", 30));
 
-		movies.stream()
-			// Step 1: Filter movies with more than 10 likes
-			.filter(m -> m.getLikes() > 10)
-			// Log filtered movies
-			.peek(m -> System.out.println("filtered: " + m.getTitle()))
-			// Step 2: Map movies to their titles
-			.map(Movie::getTitle)
-			// Log mapped titles
-			.peek(m -> System.out.println("mapped: " + m))
-			// Step 3: Print the final titles
-			.forEach(System.out::println);
-	}
-
-	public static void main(String[] args) {
-		show();
-	}
+        movies.stream()
+                // Step 1: Filter movies with more than 10 likes
+                .filter(m -> m.getLikes() > 10)
+                // Log filtered movies
+                .peek(m -> System.out.println("filtered: " + m.getTitle()))
+                // Step 2: Map movies to their titles
+                .map(Movie::getTitle)
+                // Log mapped titles
+                .peek(m -> System.out.println("mapped: " + m))
+                // Step 3: Print the final titles
+                .forEach(System.out::println);
+    }
 
 }
