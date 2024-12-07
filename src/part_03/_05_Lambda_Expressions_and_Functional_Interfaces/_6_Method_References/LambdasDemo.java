@@ -56,27 +56,23 @@ public class LambdasDemo {
 
 		// 1. Using a lambda expression
 		greet(message -> System.out.println("Lambda expression: " + message));
-
 		// Equivalent method reference to an instance method (println)
 		// System.out::println is a method reference to the println method of PrintStream
 		greet(System.out::println);
 
 		// 2. Using a lambda expression to call a static method
 		greet(message -> LambdasDemo.printStatic(message));
-
 		// Equivalent method reference to a static method
 		greet(LambdasDemo::printStatic);
 
 		// 3. Using a lambda expression to call an instance method
 		var demo = new LambdasDemo();
 		greet(message -> demo.printInstance(message));
-
 		// Equivalent method reference to an instance method
 		greet(demo::printInstance);
 
 		// 4. Using a lambda expression to call a constructor
 		greet(message -> new LambdasDemo(message));
-
 		// Equivalent method reference to a constructor
 		greet(LambdasDemo::new);
 	}
