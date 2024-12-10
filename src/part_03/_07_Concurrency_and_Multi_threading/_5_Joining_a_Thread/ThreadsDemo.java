@@ -7,7 +7,7 @@ public class ThreadsDemo {
 		thread.start();
 
 		try {
-			thread.join();// Main thread waits for the download thread to finish
+			thread.join(); // Main thread waits for the download thread to finish
 		}
 		catch (InterruptedException e) {
 			throw new RuntimeException(e);
