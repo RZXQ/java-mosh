@@ -30,6 +30,7 @@ public class DownloadStatus {
 	}
 
 	// Increments totalFiles using the synchronized keyword
+	// Don't use the synchronized keyword in new codebase
 	public synchronized void incrementTotalFiles() {
 		// Synchronizes on the current instance (equivalent to synchronized(this))
 		// Ensures only one thread can execute this method or other synchronized methods
