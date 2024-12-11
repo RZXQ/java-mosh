@@ -16,7 +16,7 @@ public class ThreadsDemo {
 			threads.add(thread);
 		}
 
-		// wait for all the thread to finish
+		// wait for all the threads to finish
 		for (var thread : threads) {
 			try {
 				thread.join();
