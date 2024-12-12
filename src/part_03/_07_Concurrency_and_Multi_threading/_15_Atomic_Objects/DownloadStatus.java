@@ -2,6 +2,9 @@ package part_03._07_Concurrency_and_Multi_threading._15_Atomic_Objects;
 
 import java.util.concurrent.atomic.AtomicInteger;
 
+///  [ Memory Cell ]  <-- Multiple threads contend for this single cell
+///    ↑   ↑   ↑
+/// Thread1 Thread2 Thread3
 public class DownloadStatus {
 
 	// 1.1 AtomicInteger Field - totalBytes
