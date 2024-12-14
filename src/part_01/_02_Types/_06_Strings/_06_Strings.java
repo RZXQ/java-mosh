@@ -20,10 +20,12 @@ public class _06_Strings {
 		System.out.println(message.replaceAll("!", "*"));
 
 		// 5. "toLowerCase", "toUpperCase", "trim"
-		System.out.println(message);
 		System.out.println(message.toLowerCase());
 		System.out.println(message.toUpperCase());
 		System.out.println(message.trim());
+
+		// 6. "substring"
+		System.out.println(message.substring(0, 5));
 	}
 
 }
