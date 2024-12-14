@@ -5,20 +5,18 @@ import java.util.Arrays;
 public class _08_Arrays {
 
 	public static void main(String[] args) {
-		// Initialize and modify the first array
-		int[] numbers = new int[5];
-		numbers[0] = 1; // Modify first element
+		// Array initialization
+		int[] numbers = new int[5]; // Dynamic initialization
+		int[] numbers2 = { 2, 3, 5, 1, 4 }; // Static initialization
 
-		// Print the initial array
-		System.out.println("Array 'numbers': " + Arrays.toString(numbers)); // Arrays.toString()
+		// numbers.length
+		System.out.println("Length of 'numbers': " + numbers.length);
 
-		// Initialize, sort and print the second array
-		int[] numbers2 = { 2, 3, 5, 1, 4 };
-		Arrays.sort(numbers2); // Arrays.sort()
+		// Arrays.sort()
+		Arrays.sort(numbers2);
 
-		// Print length and sorted array
-		System.out.println("Length of 'numbers': " + numbers.length); // numbers.length
-		System.out.println("Sorted array 'numbers2': " + Arrays.toString(numbers2)); // Arrays.toString()
+		// Arrays.toString()
+		System.out.println("Array 'numbers': " + Arrays.toString(numbers));
 	}
 
 }
