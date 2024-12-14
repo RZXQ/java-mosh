@@ -19,29 +19,17 @@ package part_01._02_Types._03_Primitive_Types;
 /// | char      | 16-bit   | 0 to 65,535 (Unsigned, represents Unicode characters)      |
 /// | boolean   | N/A      | true or false                                              |
 public class _03_Primitive_Types {
-    public static void main(String[] args) {
-        // byte: small integer value (-128 to 127)
-        byte age = 30;
 
-        // long: large integer value, ends with 'L' (useful for very large numbers)
-        long viewsCount = 3_123_456_789L;
+	public static void main(String[] args) {
+		byte age = 30;
 
-        // float: floating-point number, ends with 'F' (useful for decimals with less precision)
-        float price = 10.99F;
+		long viewsCount = 3_123_456_789L;
 
-        // char: single character, stored in single quotes ('A')
-        char letter = 'A';
+		float price = 10.99F;
 
-        // boolean: true or false value
-        boolean isEligible = false;
+		char letter = 'A';
 
-        /*
-         * Summary of Key Points:
-         * - Primitive types are simple data types with fixed sizes in memory.
-         * - Use 'byte', 'short', 'int', and 'long' for whole numbers of different sizes.
-         * - Use 'float' and 'double' for numbers with decimal points (float is less precise).
-         * - Use 'char' for single characters (Unicode).
-         * - Use 'boolean' for true/false values.
-         */
-    }
+		boolean isEligible = false;
+	}
+
 }
