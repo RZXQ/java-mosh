@@ -37,8 +37,4 @@ public class CompletableFuturesDemo {
 		}
 	}
 
-	public static void main(String[] args) {
-		show(); // Call the show() method to demonstrate exception handling
-	}
-
 }
