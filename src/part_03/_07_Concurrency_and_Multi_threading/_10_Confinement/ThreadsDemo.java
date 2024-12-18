@@ -36,8 +36,15 @@ public class ThreadsDemo {
 
 		// Since each task confined its download status, we safely combine results
 		var totalBytes = tasks.stream().map(task -> task.getStatus().getTotalBytes()).reduce(Integer::sum);
-
 		System.out.println(totalBytes);
+
+		// another way to count the total number:
+		System.out.println(tasks.stream()
+			.map(DownloadFileTask::getStatus)
+			.map(DownloadStatus::getTotalBytes)
+			.reduce(Integer::sum)
+			.orElse(0));
+
 	}
 
 }
