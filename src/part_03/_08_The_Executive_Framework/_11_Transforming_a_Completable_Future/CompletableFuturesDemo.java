@@ -9,14 +9,10 @@ public class CompletableFuturesDemo {
 	}
 
 	public static void show() {
-		// Create a CompletableFuture that supplies an initial value (20)
 		var future = CompletableFuture.supplyAsync(() -> 20);
 
-		// thenApply():
-		// - This maps the result (Celsius) to a different type (Fahrenheit).
-		//
-		// thenAccept():
-		// - Consumes the transformed result and performs an action.
+		// thenApply() - Transforms the result from Celsius to Fahrenheit.
+		// thenAccept() - Consumes the transformed result (Fahrenheit) and prints it.
 		future.thenApply(CompletableFuturesDemo::toFahrenheit).thenAccept(System.out::println);
 	}
 
