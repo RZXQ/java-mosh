@@ -6,34 +6,25 @@ import java.util.concurrent.ExecutionException;
 public class CompletableFuturesDemo {
 
 	public static void show() {
-		// 1. Create a CompletableFuture using supplyAsync().
-		// This simulates an asynchronous task that throws an exception.
 		var future = CompletableFuture.supplyAsync(() -> {
-			System.out.println("Getting the current weather");
-			// Simulate an exception being thrown in a separate thread.
-			throw new IllegalStateException();
+			System.out.println("Fetching the current weather...");
+			throw new IllegalStateException("Weather service not available.");
 		});
 
 		try {
-			// 2. Handle exceptions with exceptionally():
-			// - If no exception occurs, the original CompletableFuture result is used.
-			// - If an exception occurs, the fallback value (23) is returned.
-			// - get() retrieves the result: the original or the fallback value.
+			// Use exceptionally() to handle exceptions and provide a fallback value.
 			var temperature = future.exceptionally(ex -> {
-				System.out.println("Exception occurred: " + ex); // Log the exception
-				return 23; // Provide a fallback value
-			}).get(); // Block and retrieve the result (or fallback value)
+				System.out.println("Exception occurred: " + ex);
+				return 23; // Fallback value
+			}).get();
 
-			// 3. Print the result (either the computed value or the fallback).
 			System.out.println("Temperature: " + temperature);
 		}
 		catch (InterruptedException e) {
-			// Handle thread interruption during the blocking get() call
-			throw new RuntimeException("Thread was interrupted", e);
+			throw new RuntimeException("Interrupted while waiting for result", e);
 		}
 		catch (ExecutionException e) {
-			// Handle exceptions thrown during the asynchronous computation
-			throw new RuntimeException("Execution exception occurred", e);
+			throw new RuntimeException("Error during asynchronous computation", e);
 		}
 	}
 
