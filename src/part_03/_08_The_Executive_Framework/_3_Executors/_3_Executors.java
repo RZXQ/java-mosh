@@ -8,6 +8,9 @@ public class _3_Executors {
 
 		var executor = Executors.newFixedThreadPool(2);
 
+		// Print the runtime class of the ExecutorService
+		System.out.println(executor.getClass().getName());
+
 		try {
 			executor.submit(() -> System.out.println(Thread.currentThread().getName()));
 		}
