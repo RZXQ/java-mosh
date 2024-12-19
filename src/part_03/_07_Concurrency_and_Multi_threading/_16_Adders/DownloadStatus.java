@@ -2,30 +2,36 @@ package part_03._07_Concurrency_and_Multi_threading._16_Adders;
 
 import java.util.concurrent.atomic.LongAdder;
 
+/// **LongAdder & High-Concurrency Updates**
+///
 ///  [ Cell1 ] [ Cell2 ] [ Cell3 ]   <-- Distributed memory cells
 ///     ↑         ↑         ↑
 /// Thread1    Thread2    Thread3
+///
+/// **How LongAdder Works:**
+/// - Unlike AtomicInteger or AtomicLong, which use a single memory cell, LongAdder
+///   maintains multiple internal cells to reduce contention in high-concurrency scenarios.
+/// - Each thread updates one of these cells independently, avoiding frequent conflicts
+///   on a single memory location.
+/// - When `intValue()` or `sum()` is called, it aggregates the values in all cells to produce
+///   the final result.
+///
+/// **Advantages:**
+/// - Ideal for situations where frequent updates from many threads occur.
+/// - Higher throughput compared to AtomicInteger or AtomicLong under contention.
+/// - Trades off slightly higher memory usage for significantly improved performance in
+///   multi-threaded environments.
 public class DownloadStatus {
 
-	// 1. LongAdder for High-Concurrency Updates
-	// - LongAdder is efficient for cases with frequent updates by multiple threads.
-	// - Compared to AtomicInteger or AtomicLong, which update a single memory location
-	// (causing contention), LongAdder distributes updates across multiple cells.
-	// - Each cell holds part of the total, allowing threads to update separate cells
-	// concurrently.
-	// - This reduces contention and improves performance in high-concurrency scenarios.
+	// LongAdder: Efficient counter for high-concurrency environments.
 	private final LongAdder totalBytes = new LongAdder();
 
-	// 2. getTotalBytes() Method - Returns the current total byte count.
-	// - LongAdder.intValue() aggregates (sums) the values in all cells for the final
-	// result.
+	// Retrieves the current total byte count by aggregating all cells.
 	public int getTotalBytes() {
 		return totalBytes.intValue(); // Converts long sum to int
 	}
 
-	// 3. incrementTotalBytes() Method - Increments totalBytes by 1.
-	// - Adds 1 to one of LongAdder's internal cells, ensuring fast and thread-safe
-	// increments.
+	// Increments totalBytes by 1 in a thread-safe manner.
 	public void incrementTotalBytes() {
 		this.totalBytes.increment();
 	}
