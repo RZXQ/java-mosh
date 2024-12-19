@@ -6,22 +6,17 @@ import java.util.concurrent.ExecutionException;
 public class CompletableFuturesDemo {
 
 	public static void show() {
-		// 1. Define a simple Runnable task that prints "a"
+		// Define a simple Runnable task
 		Runnable task = () -> System.out.println("a");
 
-		// 2. CompletableFuture.runAsync():
-		// Executes a task asynchronously using the default ForkJoinPool.commonPool().
+		// Run a Runnable task asynchronously
 		CompletableFuture<Void> c1 = CompletableFuture.runAsync(task);
 
-		// 3. CompletableFuture.supplyAsync():
-		// Executes a task that returns a value asynchronously. The value here is 1.
+		// Execute a task asynchronously that returns a value
 		CompletableFuture<Integer> c2 = CompletableFuture.supplyAsync(() -> 1);
 
+		// Retrieve and print the result (get is a blocking method)
 		try {
-			// 4. Retrieve and print the result of the CompletableFuture using get().
-			// This blocks the main thread until the computation is complete and the
-			// result is available. Other threads (worker threads) are not blocked by
-			// this call.
 			System.out.println(c2.get());
 		}
 		catch (InterruptedException | ExecutionException e) {
