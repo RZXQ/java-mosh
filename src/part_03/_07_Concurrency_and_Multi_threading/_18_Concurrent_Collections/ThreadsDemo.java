@@ -4,32 +4,38 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 
+/// **Concurrent Collections vs. Synchronized Collections**
+/// - Traditional synchronized collections (e.g., `Collections.synchronizedMap`) lock the entire collection for every operation.
+///   This ensures thread safety but can lead to poor performance, as only one thread can access the collection at a time.
+///
+/// **Concurrent Collections:**
+/// - Concurrent collections, such as `ConcurrentHashMap`, improve performance under concurrency.
+/// - They use internal partitioning (segmentation) so multiple threads can safely operate on different segments simultaneously.
+/// - This reduces contention and improves throughput compared to fully synchronized collections.
+///
+/// **ConcurrentHashMap:**
+/// - Thread-safe without blocking the entire map for each operation.
+/// - Multiple threads can read, write, and remove entries concurrently on different segments.
+/// - Offers higher performance in multi-threaded scenarios than synchronized maps.
+///
+/// **In This Code:**
+/// - `HashMap` is not thread-safe and can’t be used safely by multiple threads without external synchronization.
+/// - `ConcurrentHashMap` provides thread safety without the significant performance penalties of full synchronization.
+///
+/// **Key Benefit:**
+/// - Allows concurrent access and modification, making it suitable for heavily concurrent environments.
 public class ThreadsDemo {
-    public static void show() {
-        // 1. Synchronized Collection Drawbacks
-        // - Synchronized collections (e.g., Collections.synchronizedMap) use locks to control access.
-        // - While locks ensure thread safety, they can reduce performance due to blocking,
-        //   as only one thread can access the entire collection at any time.
 
-        // 2. Solution: Concurrent Collections
-        // - Concurrent collections, such as ConcurrentHashMap, address the performance issue.
-        // - They use "partitioning" (or segmentation), dividing the collection into segments.
-        // - Multiple threads can safely operate on different segments simultaneously,
-        //   which improves performance compared to traditional synchronization.
-        // - Only one thread can modify a given segment at a time, ensuring thread safety without full locking.
-        // - These classes are found in the `java.util.concurrent` package.
+	public static void show() {
+		Map<Integer, String> map1 = new HashMap<>(); // Not thread-safe
 
-        Map<Integer, String> map1 = new HashMap<>(); // Regular HashMap (NOT thread-safe)
+		// ConcurrentHashMap is thread-safe and efficient under concurrency.
+		Map<Integer, String> map2 = new ConcurrentHashMap<>();
 
-        // 3. Using ConcurrentHashMap
-        // - ConcurrentHashMap is thread-safe and avoids the performance issues of full synchronization.
-        // - Threads can perform operations concurrently on different parts of the map.
-        Map<Integer, String> map2 = new ConcurrentHashMap<>();
+		// Basic thread-safe operations on ConcurrentHashMap
+		map2.put(1, "a");
+		map2.get(1);
+		map2.remove(1);
+	}
 
-        // 4. Basic Operations on ConcurrentHashMap
-        // - These operations are thread-safe and can be performed concurrently by multiple threads.
-        map2.put(1, "a");    // Add an entry to the map
-        map2.get(1);         // Retrieve an entry from the map
-        map2.remove(1);      // Remove an entry from the map
-    }
 }
