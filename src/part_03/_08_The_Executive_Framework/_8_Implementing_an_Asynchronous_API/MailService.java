@@ -4,20 +4,14 @@ import java.util.concurrent.CompletableFuture;
 
 public class MailService {
 
+	// 1. Synchronous method
 	public void send() {
-		try {
-			Thread.sleep(3000);
-		}
-		catch (InterruptedException e) {
-			throw new RuntimeException(e);
-		}
-
+		LongTask.simulate();
 		System.out.println("Mail was sent.");
 	}
 
-	// Convert the send() method to an asynchronous version
+	// 2. Asynchronous method
 	public CompletableFuture<Void> sendAsync() {
-		// Use CompletableFuture to run the send() method asynchronously
 		return CompletableFuture.runAsync(this::send);
 	}
 
