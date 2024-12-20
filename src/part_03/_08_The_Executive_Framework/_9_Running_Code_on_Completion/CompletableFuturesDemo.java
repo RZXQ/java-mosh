@@ -33,7 +33,7 @@ import java.util.concurrent.CompletableFuture;
 ///    - Helps in creating non-blocking, fluent asynchronous pipelines.
 public class CompletableFuturesDemo {
 
-	public static void show() {
+	public static void show() throws InterruptedException {
 		var future = CompletableFuture.supplyAsync(() -> 1);
 
 		// 1. future.thenRun():
@@ -59,6 +59,8 @@ public class CompletableFuturesDemo {
 			System.out.println(Thread.currentThread().getName());
 			System.out.println(result);
 		});
+
+		Thread.sleep(2000);
 	}
 
 }
