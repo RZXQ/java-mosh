@@ -1,6 +1,7 @@
 package part_03._08_The_Executive_Framework._6_Completable_Futures;
 
-///  | Aspect            | Future                                           | CompletionStage                               | CompletableFuture                                    |
+/// #  CompletableFuture = Future (Async) + CompletionStage (Chaining)
+/// | Aspect            | Future                                           | CompletionStage                               | CompletableFuture                                    |
 /// |-------------------|--------------------------------------------------|------------------------------------------------|------------------------------------------------------|
 /// | Key Idea          | Represents the result of an async computation    | Represents a stage that triggers actions upon completion of another stage | Combines Future and CompletionStage capabilities      |
 /// | Advantages        | Simple handle to async results                  | Enables non-blocking chains of dependent tasks | Offers both a Future’s result handling and a CompletionStage’s chaining and composition |
