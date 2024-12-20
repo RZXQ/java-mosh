@@ -5,18 +5,17 @@ public class _8_Implementing_an_Asynchronous_API {
 	public static void main(String[] args) {
 		var service = new MailService();
 
-		// 1. Demonstration of synchronous method (blocking)
+		// 1. Synchronous method (Blocking)
 		service.send();
-		System.out.println("Hello World");
+		System.out.println("Main thread: This line is blocked until send() completes.");
 
-		// 2. Demonstration of asynchronous method: (non-blocking)
+		// 2. Asynchronous method (Non-blocking)
 		service.sendAsync();
-		System.out.println("Hello World");
+		System.out.println("Main thread: This line executes immediately without waiting for sendAsync().");
 
-		// 3. Wait for the asynchronous task to finish (approve mail was sent)
-		// Sleep for 5 seconds to ensure the mail is sent before the program ends.
+		// Wait for the asynchronous task to complete
 		try {
-			Thread.sleep(5000);
+			Thread.sleep(5000);// Sleep is used to wait for the async task to finish
 		}
 		catch (InterruptedException e) {
 			throw new RuntimeException(e);
