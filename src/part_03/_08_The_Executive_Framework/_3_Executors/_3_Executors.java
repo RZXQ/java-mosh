@@ -13,34 +13,28 @@ import java.util.concurrent.Executors;
 /// - The executor's runtime class is ThreadPoolExecutor.
 ///
 /// Proper Shutdown Management:
-/// - If the executor is not explicitly shut down, threads in the thread pool
-///   remain alive and continue waiting for new tasks.
+/// - If the executor is not shut down, threads in the thread pool remain
+///   alive and continue waiting for new tasks.
 /// - Calling shutdown ensures no new tasks are accepted and allows currently
 ///   running tasks to complete before shutting down.
 ///
-/// Why use try-finally?
-/// - Exceptions might occur during task submission, potentially leaving the
-///   executor running.
-/// - Using a finally block ensures that the executor is explicitly shut down
-///   and released from memory, avoiding resource leaks.
+/// Why use try-with-resources?
+/// - Ensures that the executor is automatically shut down when the block ends.
+/// - Prevents resource leaks by guaranteeing proper cleanup, even in case of exceptions.
 public class _3_Executors {
 
 	public static void main(String[] args) {
 
-		var executor = Executors.newFixedThreadPool(2);
-		// Print the runtime class of the ExecutorService: ThreadPoolExecutor
-		System.out.println("Executor type: " + executor.getClass().getName());
+		try (var executor = Executors.newFixedThreadPool(2)) {
+			// Print the runtime class of the ExecutorService: ThreadPoolExecutor
+			System.out.println("Executor type: " + executor.getClass().getName());
 
-		try {
 			// Submit 10 tasks to the executor
 			for (int i = 0; i < 10; i++) {
-				executor
-					.submit(() -> System.out.println("Executing task in thread: " + Thread.currentThread().getName()));
+				int taskId = i + 1; // Add task identifier for better logging
+				executor.submit(() -> System.out
+					.println("Executing Task " + taskId + " in thread: " + Thread.currentThread().getName()));
 			}
-		}
-		finally {
-			// Shutdown the executor
-			executor.shutdown();
 		}
 	}
 
