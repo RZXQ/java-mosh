@@ -6,9 +6,9 @@ public class MailService {
 
 	// 1. Synchronous method
 	public void send() {
-		System.out.println(Thread.currentThread().getName() + " ✉️Sending mail...");
+		System.out.println(Thread.currentThread().getName() + " thread: ✉️Sending mail...");
 		LongTask.simulate();
-		System.out.println(Thread.currentThread().getName() + " ✉️Mail was sent.");
+		System.out.println(Thread.currentThread().getName() + " thread: ✉️Mail was sent.");
 	}
 
 	// 2. Asynchronous method
