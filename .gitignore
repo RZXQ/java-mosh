@@ -1174,5 +1174,3 @@ next-env.d.ts
 # Android studio 3.1+ serialized cache file
 
 /Writerside/w.tree!
-/src/Main.java
-./src/Main.java
