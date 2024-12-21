@@ -10,16 +10,11 @@ public class _8_Implementing_an_Asynchronous_API {
 		System.out.println("Main thread: This line is blocked until send() completes.");
 
 		// 2. Asynchronous method (Non-blocking)
-		service.sendAsync();
+		var future = service.sendAsync();
 		System.out.println("Main thread: This line executes immediately without waiting for sendAsync().");
 
 		// Wait for the asynchronous task to complete
-		try {
-			Thread.sleep(5000);// Sleep is used to wait for the async task to finish
-		}
-		catch (InterruptedException e) {
-			throw new RuntimeException(e);
-		}
+		future.join();
 	}
 
 }
