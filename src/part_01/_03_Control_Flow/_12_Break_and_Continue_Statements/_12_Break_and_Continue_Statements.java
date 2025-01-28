@@ -6,23 +6,33 @@ public class _12_Break_and_Continue_Statements {
 
 	public static void main(String[] args) {
 		Scanner scanner = new Scanner(System.in);
-		String input = "";
+
 		while (true) {
 			System.out.print("Input: ");
-			input = scanner.next().toLowerCase();
+			String input = scanner.next().toLowerCase();
 
-			// break:
-			if ("quit".equals(input)) {
+			/*
+			 * ===========================================================================
+			 * Break
+			 * ===========================================================================
+			 */
+			if ("break".equals(input)) {
 				break;
 			}
 
-			// pass:
-			if ("pass".equals(input)) {
+			/*
+			 * ===========================================================================
+			 * Continue
+			 * ===========================================================================
+			 */
+			if ("continue".equals(input)) {
 				continue;
 			}
 
 			System.out.println(input);
 		}
+
+		scanner.close();
 	}
 
 }
