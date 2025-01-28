@@ -5,20 +5,39 @@ import java.util.Scanner;
 public class _16_Reading_Input {
 
 	public static void main(String[] args) {
-		// Creates a Scanner to read input from the terminal.
+
+		/*
+		 * ===============================================================================
+		 * Scanner for Reading Input
+		 * ===============================================================================
+		 */
 		Scanner scanner = new Scanner(System.in);
 
-		// scanner.nextByte(): Reads the next byte of input and moves the cursor to the
-		// same line after the number.
-		byte age = scanner.nextByte();
+		/*
+		 * ===============================================================================
+		 * scanner.nextByte()
+		 * ===============================================================================
+		 */
+		byte age = scanner.nextByte(); // Reads a single byte value (e.g., age)
 
-		// scanner.next(): Reads the next token (single word) until a whitespace is
-		// encountered, leaving the cursor at the end of the word on the same line.
+		/*
+		 * ===============================================================================
+		 * scanner.next()
+		 * ===============================================================================
+		 */
 		String name = scanner.next();
+		// Reads a single word (stops at whitespace, e.g., "John" from "John Doe")
 
-		// scanner.nextLine(): Consumes any leftover newline character before reading the
-		// next line. Reads the entire line of input
+		/*
+		 * ===============================================================================
+		 * scanner.nextLine()
+		 * ===============================================================================
+		 */
+		scanner.nextLine(); // Consumes leftover newline from previous input
 		String fullName = scanner.nextLine().trim();
+		// Reads the entire line, including spaces (e.g., "John Doe")
+
+		scanner.close(); // Close the scanner to prevent resource leaks
 	}
 
 }
