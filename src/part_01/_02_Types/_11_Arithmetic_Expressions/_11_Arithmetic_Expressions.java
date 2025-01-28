@@ -4,25 +4,30 @@ public class _11_Arithmetic_Expressions {
 
 	public static void main(String[] args) {
 
-		// 1. Basic Arithmetic Operations
+		/*
+		 * ===============================================================================
+		 * Basic Arithmetic Operations
+		 * ===============================================================================
+		 */
 		int additionResult = 10 + 3;
 		int divisionResult = 10 / 3;
 
-		// 2. Increment Operations
+		/*
+		 * ===============================================================================
+		 * Increment Examples
+		 * ===============================================================================
+		 */
 		int x = 1;
-		x++; // Equivalent to ++x
-		System.out.println("x after x++: " + x);
+		x++; // Same as ++x when used alone
+		System.out.println(x);
 
-		int x1 = 1;
-		int y1 = x1++;
+		int x1 = 1, y1 = x1++; // Post-increment: y1 = x1, then x1++
 		System.out.println(x1);
 		System.out.println(y1);
 
-		int x2 = 1;
-		int y2 = ++x;
+		int x2 = 1, y2 = ++x2; // Pre-increment: x2++, then y2 = x2
 		System.out.println(x2);
 		System.out.println(y2);
-
 	}
 
 }
