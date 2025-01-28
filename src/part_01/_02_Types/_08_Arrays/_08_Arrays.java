@@ -4,18 +4,41 @@ import java.util.Arrays;
 
 public class _08_Arrays {
 
-	public static void main(String[] args) {
-		// Array initialization
-		int[] numbers = new int[5]; // Dynamic initialization
-		int[] numbers2 = { 2, 3, 5, 1, 4 }; // Static initialization
+	/*
+	 * ===============================================================================
+	 * Arrays in Java
+	 * ===============================================================================
+	 */
 
-		// numbers.length
+	public static void main(String[] args) {
+
+		/*
+		 * ===============================================================================
+		 * Array Initialization
+		 * ===============================================================================
+		 */
+		int[] numbers = new int[5]; // Dynamic initialization (default values: 0)
+		int[] numbers2 = { 2, 3, 5, 1, 4 }; // Static initialization (predefined values)
+
+		/*
+		 * ===============================================================================
+		 * Array Length
+		 * ===============================================================================
+		 */
 		System.out.println("Length of 'numbers': " + numbers.length);
 
-		// Arrays.sort()
+		/*
+		 * ===============================================================================
+		 * Sorting an Array
+		 * ===============================================================================
+		 */
 		Arrays.sort(numbers2);
 
-		// Arrays.toString()
+		/*
+		 * ===============================================================================
+		 * Array to String Conversion
+		 * ===============================================================================
+		 */
 		System.out.println("Array 'numbers': " + Arrays.toString(numbers));
 	}
 
