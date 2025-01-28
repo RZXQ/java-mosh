@@ -6,11 +6,19 @@ public class _15_Formatting_Numbers {
 
 	public static void main(String[] args) {
 
-		// NumberFormat.getCurrencyInstance()
+		/*
+		 * ===============================================================================
+		 * NumberFormat.getCurrencyInstance()
+		 * ===============================================================================
+		 */
 		NumberFormat currency = NumberFormat.getCurrencyInstance();
 		System.out.println(currency.format(1.4));
 
-		// NumberFormat.getPercentInstance()
+		/*
+		 * ===============================================================================
+		 * NumberFormat.getPercentInstance()
+		 * ===============================================================================
+		 */
 		System.out.println(NumberFormat.getPercentInstance().format(0.1));
 	}
 
