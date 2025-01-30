@@ -5,7 +5,7 @@ public class _7_Encapsulation {
 
 	public static void main(String[] args) {
 		Employee employee = new Employee();
-		employee.setBaseSalary(50_000);
+		employee.setSalary(50_000);
 		employee.setHourlyRate(20);
 
 		int wage = employee.calculateWage(20);
