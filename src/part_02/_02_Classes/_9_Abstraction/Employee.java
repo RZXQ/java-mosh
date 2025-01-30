@@ -19,7 +19,9 @@ interface Workable {
 /*
  * ===============================================================================
  * Abstract Employee Class (Abstraction)
- * ===============================================================================
+ * =============================================================================== -
+ * Implements Workable interface. - Defines an abstract method for getting employment
+ * type. ===============================================================================
  */
 abstract class Employee implements Workable {
 
@@ -32,6 +34,9 @@ abstract class Employee implements Workable {
 	public String getName() {
 		return name;
 	}
+
+	// Abstract method to be implemented by subclasses
+	public abstract String getEmploymentType();
 
 }
 
@@ -51,6 +56,11 @@ class FullTimeEmployee extends Employee {
 		System.out.println(getName() + " works full-time.");
 	}
 
+	@Override
+	public String getEmploymentType() {
+		return "Full-Time";
+	}
+
 }
 
 /*
@@ -67,6 +77,11 @@ class PartTimeEmployee extends Employee {
 	@Override
 	public void work() {
 		System.out.println(getName() + " works part-time.");
+	}
+
+	@Override
+	public String getEmploymentType() {
+		return "Part-Time";
 	}
 
 }
