@@ -1,37 +1,72 @@
 package part_02._02_Classes._9_Abstraction;
 
-public class Employee {
+/*===============================================================================
+ *                              Abstraction in OOP
+ *===============================================================================
+ * - Hides implementation details, exposing only essential features.
+ * - Provides a simplified interface while keeping complex logic hidden.
+ ===============================================================================*/
 
-	private int baseSalary;
+/*===============================================================================
+ *                          Work Behavior Interface (Abstraction)
+ *===============================================================================*/
+interface Workable {
 
-	private int hourlyRate;
+	void work(); // Defines an abstract work behavior
 
-	public void setBaseSalary(int salary) {
-		if (baseSalary <= 0 ) {
-			throw new IllegalArgumentException("Salary cannot be 0 or less.");
-		}
-		this.baseSalary = baseSalary;
+}
+
+/*
+ * ===============================================================================
+ * Abstract Employee Class (Abstraction)
+ * ===============================================================================
+ */
+abstract class Employee implements Workable {
+
+	private final String name;
+
+	public Employee(String name) {
+		this.name = name;
 	}
 
-	// abstraction principal: changing from public modifier to private
-	private int getBaseSalary() {
-		return this.baseSalary;
-	}
-	
-	// abstraction principal: changing from public modifier to private
-	private int getHourlyRate() {
-		return hourlyRate;
+	public String getName() {
+		return name;
 	}
 
-	public void setHourlyRate(int hourlyRate) {
-		if (hourlyRate <= 0) {
-			throw new IllegalArgumentException("Hourly rate cannot be 0 or negative.");
-		}
-		this.hourlyRate = hourlyRate;
+}
+
+/*
+ * ===============================================================================
+ * Full-Time Employee Implementation
+ * ===============================================================================
+ */
+class FullTimeEmployee extends Employee {
+
+	public FullTimeEmployee(String name) {
+		super(name);
 	}
 
-	public int calculateWage(int extraHours) {
-		return this.baseSalary + (this.hourlyRate * extraHours);
+	@Override
+	public void work() {
+		System.out.println(getName() + " works full-time.");
+	}
+
+}
+
+/*
+ * ===============================================================================
+ * Part-Time Employee Implementation
+ * ===============================================================================
+ */
+class PartTimeEmployee extends Employee {
+
+	public PartTimeEmployee(String name) {
+		super(name);
+	}
+
+	@Override
+	public void work() {
+		System.out.println(getName() + " works part-time.");
 	}
 
 }
