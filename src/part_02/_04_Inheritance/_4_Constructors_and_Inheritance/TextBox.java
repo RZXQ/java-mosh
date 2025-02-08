@@ -2,23 +2,23 @@ package part_02._04_Inheritance._4_Constructors_and_Inheritance;
 
 public class TextBox extends UIControl {
 
-	private String text = "";
-
+	/*
+	 * ===============================================================================
+	 * Default Constructor (Child)
+	 * ===============================================================================
+	 */
 	public TextBox() {
-		super(false); // call the constructor in parent class
-		System.out.println("TextBox");
+		System.out.println("Child Class: TextBox + 0 Parameter");
 	}
 
-	public String getText() {
-		return text;
-	}
-
-	public void setText(String text) {
-		this.text = text;
-	}
-
-	public void clear() {
-		text = "";
+	/*
+	 * ===============================================================================
+	 * Parameterized Constructor (Child)
+	 * ===============================================================================
+	 */
+	public TextBox(boolean isEnable) {
+		super(isEnable);
+		System.out.println("Child Class: TextBox + 1 Parameter");
 	}
 
 }

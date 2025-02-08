@@ -4,21 +4,23 @@ public class UIControl {
 
 	private boolean isEnabled;
 
+	/*
+	 * ===============================================================================
+	 * Default Constructor (Parent)
+	 * ===============================================================================
+	 */
+	public UIControl() {
+		System.out.println("Parent Class: UIControl + 0 Parameter");
+	}
+
+	/*
+	 * ===============================================================================
+	 * Parameterized Constructor (Parent)
+	 * ===============================================================================
+	 */
 	public UIControl(boolean isEnabled) {
 		this.isEnabled = isEnabled;
-		System.out.println("UIControl");
-	}
-
-	public void enable() {
-		isEnabled = true;
-	}
-
-	public void disable() {
-		isEnabled = false;
-	}
-
-	public boolean isEnabled() {
-		return this.isEnabled;
+		System.out.println("Parent Class: UIControl + 1 Parameter");
 	}
 
 }
